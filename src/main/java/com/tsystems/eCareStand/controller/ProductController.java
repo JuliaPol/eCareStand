@@ -5,30 +5,37 @@ import com.tsystems.eCareStand.model.Option;
 import com.tsystems.eCareStand.model.Rate;
 
 import javax.ejb.EJB;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
 @Named("product")
-@SessionScoped
+@ApplicationScoped
 public class ProductController implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @EJB
+    @Inject
     private AllProduct topRate;
 
     private List<Rate> topRateList;
-
-    private List<Option> topOptionList;
+    private List<Rate> allRateList;
+    private List<Option> allOptionList;
 
     public List<Rate> getTopRateList() {
         topRateList = topRate.getTopRates();
         return topRateList;
     }
 
+    public List<Rate> getAllRateList() {
+        allRateList = topRate.getAllRates();
+        return allRateList;
+    }
+
     public List<Option> getTopOptionList() {
-        topOptionList= topRate.getTopOptions();
-        return topOptionList;
+        allOptionList= topRate.getTopOptions();
+        return allOptionList;
     }
 }

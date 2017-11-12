@@ -22,6 +22,8 @@ public class Option {
 
     private String description;
 
+    private String image;
+
     private List<String> compatibleOptions;
 
     private List<String> incompatibleOptions;
@@ -37,5 +39,6 @@ public class Option {
         this.compatibleOptions = option.compatibleOptions;
         this.incompatibleOptions = option.incompatibleOptions;
         this.compatibleOptionsOf = option.compatibleOptionsOf;
+        this.image = option.image;
     }
 }

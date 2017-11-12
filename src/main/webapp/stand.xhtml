@@ -1,28 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
-<div id="container">
-    <ui:repeat value="#{product.topRateList}" var="rateElem">
-        #{rateElem.name}
-        #{rateElem.cost}
-        #{rateElem.description}
-        <ui:repeat value="#{rateElem.optionList}" var="optionElem">
-            #{optionElem.name}
-        </ui:repeat>
-    </ui:repeat>
-</div>
-<div id="container2">
-    <ui:repeat value="#{product.topOptionList}" var="option">
-        #{option.name}
-        #{option.cost}
-        #{option.description}
-    </ui:repeat>
-</div>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:o="http://omnifaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+    <link rel="stylesheet" href="#{resource['css/stand.css']}" />
+    <h:outputStylesheet name="css/bootstrap.min.css"/>
+    <title>Satellite</title>
+</h:head>
+<h:body id="body">
+    <f:view>
+        <h:outputText styleClass="new-rates" value="New tariffs:"/>
+        <b:carousel id="parque" interval="4000" show-indicators="false">
+            <b:carouselItem>
+                    <div class="new-rate">
+                        <b:row>
+                            <b:column span="1"><img class="carousel-rate" src="#{product.topRateList.get(0).image}" alt="#{product.topRateList.get(0).image}"/></b:column>
+                            <b:column span="3"><h:outputText styleClass="carousel-name" value="#{product.topRateList.get(0).name}"/></b:column>
+                            <b:column span="4">
+                                <b:row styleClass="carousel-opt">
+                                    <ui:repeat value="#{product.topRateList.get(0).optionList}" var="optionElem">
+                                        <b:column span="11"><h:outputText value="#{optionElem.name}"/></b:column>
+                                    </ui:repeat>
+                                </b:row>
+                            </b:column>
+                            <b:column span="2"><h:outputText styleClass="carousel-cost" value="#{product.topRateList.get(0).cost} $"/></b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column span="4"><h:outputText styleClass="carousel-description" value="#{product.topRateList.get(0).description}"/></b:column>
+                            <b:column span="2"><h:outputText styleClass="carousel-sms" value="#{product.topRateList.get(0).sms} SMS"/></b:column>
+                            <b:column span="2"><h:outputText styleClass="carousel-sms" value="#{product.topRateList.get(0).internet} Gb"/></b:column>
+                            <b:column span="2"><h:outputText styleClass="carousel-sms" value="#{product.topRateList.get(0).calls} minutes"/></b:column>
+                        </b:row>
+                    </div>
+            </b:carouselItem>
+            <ui:repeat value="#{product.topRateList.subList(1,product.topRateList.size())}" var="rateElem">
+                <b:carouselItem>
+                    <div class="new-rate">
+                        <b:row>
+                            <b:column span="1"><img class="carousel-rate" src="#{rateElem.image}" alt="#{rateElem.image}"/></b:column>
+                            <b:column span="3"><h:outputText styleClass="carousel-name" value="#{rateElem.name}"/></b:column>
+                            <b:column span="4">
+                                <b:row styleClass="carousel-opt">
+                                    <ui:repeat value="#{rateElem.optionList}" var="optionElem">
+                                        <b:column span="11"><h:outputText value="#{optionElem.name}"/></b:column>
+                                    </ui:repeat>
+                                </b:row>
+                            </b:column>
+                            <b:column span="2"><h:outputText styleClass="carousel-cost" value="#{rateElem.cost} $"/></b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column span="4"><h:outputText styleClass="carousel-description" value="#{rateElem.description}"/></b:column>
+                            <b:column span="2"><h:outputText styleClass="carousel-sms" value="#{rateElem.sms} SMS"/></b:column>
+                            <b:column span="2"><h:outputText styleClass="carousel-sms" value="#{rateElem.internet} Gb"/></b:column>
+                            <b:column span="2"><h:outputText styleClass="carousel-sms" value="#{rateElem.calls} minutes"/></b:column>
+                        </b:row>
+                    </div>
+                </b:carouselItem>
+            </ui:repeat>
+        </b:carousel>
+        <h:form id="info-prod">
+            <b:tabView>
+                <b:tab styleClass="tab-title" title="All tariffs">
+                    <div class="rates">
+                        <ui:repeat value="#{product.allRateList}" var="rateElem">
+                            <div class="rate-info">
+                                <b:row>
+                                    <b:column span="1"><img class="img-rate" src="#{rateElem.image}" alt="#{rateElem.image}"/></b:column>
+                                    <b:column span="4"><h:outputText styleClass="rate-name" value="#{rateElem.name}"/></b:column>
+                                    <b:column span="4">
+                                        <b:row>
+                                            <ui:repeat value="#{rateElem.optionList}" var="optionElem">
+                                                <b:column span="11"><h:outputText value="#{optionElem.name}"/></b:column>
+                                            </ui:repeat>
+                                        </b:row>
+                                    </b:column>
+                                    <b:column span="3"><h:outputText styleClass="rate-cost" value="#{rateElem.cost} $"/></b:column>
+                                </b:row>
+                                <b:row>
+                                    <b:column span="4"><h:outputText styleClass="rate-description" value="#{rateElem.description}"/></b:column>
+                                    <b:column span="2"><h:outputText styleClass="rate-sms" value="#{rateElem.sms} SMS"/></b:column>
+                                    <b:column span="2"><h:outputText styleClass="rate-sms" value="#{rateElem.internet} Gb"/></b:column>
+                                    <b:column span="2"><h:outputText styleClass="rate-sms" value="#{rateElem.calls} minutes"/></b:column>
+                                </b:row>
+                            </div>
+                        </ui:repeat>
+                    </div>
+                </b:tab>
+                <b:tab styleClass="tab-title" title="All Options">
+                    <div class="rates">
+                        <ui:repeat value="#{product.topOptionList}" var="option">
+                            <div class="rate-info">
+                                <b:row>
+                                    <b:column span="1"><img class="img-rate" src="#{option.image}" alt="#{option.image}"/></b:column>
+                                    <b:column span="6" styleClass="rate-name"><h:outputText value="#{option.name}"/></b:column>
+                                    <b:column span="3"><h:outputText styleClass="rate-cost" value="#{option.cost}  $"/></b:column>
+                                </b:row>
+                                <b:row>
+                                    <b:column span="6"><h:outputText styleClass="rate-description" value="#{option.description}"/></b:column>
+                                    <b:column span="4"><h:outputText styleClass="rate-sms" value="Cost of connection: #{option.costOfConnection}  $"/></b:column>
+                                </b:row>
+                            </div>
+                        </ui:repeat>
+                    </div>
+                </b:tab>
+            </b:tabView>
+        </h:form>
+
+        <script type="text/javascript">
+            function socketListener(message, channel, event) {
+                console.log(message);
+                window.location.reload();
+            }
+        </script>
+        <o:socket channel="clock" scope="application" onmessage="socketListener"/>
+    </f:view>
+    <h:outputScript name="js/bootstrap.min.js"/>
+</h:body>
 </html>

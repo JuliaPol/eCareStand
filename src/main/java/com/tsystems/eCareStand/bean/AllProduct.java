@@ -17,19 +17,21 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-@Stateless
+@Stateless(name = "allProduct")
 public class AllProduct implements Serializable {
 
     private static final Logger log = Logger.getLogger(AllProduct.class);
 
     private List<Rate> topRates;
-    private List<Option> topOptions;
+    private List<Rate> allRates;
+    private List<Option> allOptions;
     private ObjectMapper mapper;
 
     public AllProduct() {
         topRates = new ArrayList<>();
-        topOptions = new ArrayList<>();
+        allOptions = new ArrayList<>();
         mapper = new ObjectMapper();
     }
 
@@ -51,10 +53,11 @@ public class AllProduct implements Serializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            topRates = list;
-            for (Rate rate : topRates) {
+            allRates = list;
+            for (Rate rate : allRates) {
                 log.info(rate.getName());
             }
+            topRates = allRates.stream().skip(allRates.size()-3).collect(Collectors.toList());
         }
     }
 
@@ -69,12 +72,12 @@ public class AllProduct implements Serializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            topOptions = list;
+            allOptions = list;
         }
     }
 
     public void updateRate(String id) throws IOException {
-        Rate rate = topRates.stream().filter(o -> o.getId().equals(Long.parseLong(id))).findFirst().get();
+        Rate rate = allRates.stream().filter(o -> o.getId().equals(Long.parseLong(id))).findFirst().get();
         String jsonString = update("http://localhost:8080/tariffs/" + id);
         if (jsonString != null) {
             Rate rate1 = mapper.readValue(jsonString, Rate.class);
@@ -83,7 +86,7 @@ public class AllProduct implements Serializable {
     }
 
     public void updateOption(String id) throws IOException {
-        Option option = topOptions.stream().filter(o -> o.getId().equals(Long.parseLong(id))).findFirst().get();
+        Option option = allOptions.stream().filter(o -> o.getId().equals(Long.parseLong(id))).findFirst().get();
         String jsonString = update("http://localhost:8080/options?id=" + id);
         if (jsonString != null) {
             Option option1 = mapper.readValue(jsonString, Option.class);
@@ -108,6 +111,10 @@ public class AllProduct implements Serializable {
     }
 
     public List<Option> getTopOptions() {
-        return topOptions;
+        return allOptions;
+    }
+
+    public List<Rate> getAllRates() {
+        return allRates;
     }
 }

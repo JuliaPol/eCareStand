@@ -27,6 +27,8 @@ public class Rate {
 
     private Integer internet;
 
+    private String image;
+
     private List<Option> optionList;
 
     public void update(Rate rate) {
@@ -38,6 +40,7 @@ public class Rate {
         this.sms = rate.sms;
         this.internet = rate.internet;
         this.optionList = rate.optionList;
+        this.image = rate.image;
     }
 
 }

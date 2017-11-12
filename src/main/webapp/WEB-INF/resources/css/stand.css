@@ -1,0 +1,130 @@
+#body {
+    background-color: #E4FFF6;
+}
+
+.rates {
+    margin-top: 50px;
+    /*margin-left: 50px;*/
+    /*margin-right: 50px;*/
+    background-color: white;
+}
+
+.rate-info {
+    margin-left: 50px;
+    margin-right: 50px;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    min-height: 100px;
+}
+.rate-info:hover {
+    border-left: 0px solid #e5e5e5;
+    border-right: 0px solid #e5e5e5;
+    border-top: 0px solid #e5e5e5;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+#parque {
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+    min-height: 300px;
+    background-color: #13BFB9;
+    color: white;
+}
+
+.new-rates {
+    margin-top: 10px;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    color: white;
+    font-size: 30px;
+    background-color: #13BFB9;
+}
+
+#info-prod {
+    margin-left: 100px;
+    margin-top: -46px;
+    margin-right: 100px;
+    background-color: white;
+}
+
+.tab-title {
+    color: grey;
+    font-size: large;
+}
+
+.img-rate {
+    width: 60px;
+    height: 60px;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.rate-cost {
+    float: right;
+    margin-top: 30px;
+    margin-right: 50px;
+}
+
+.rate-name {
+    font-size: 25px;
+    color: #004a6f;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.rate-description {
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+.rate-sms {
+    float: right;
+}
+
+.new-rate {
+    margin-top: 60px;
+    min-height: 180px;
+    background-color: white;
+}
+
+.carousel-rate {
+    margin-top: 50px;
+    width: 80px;
+    height: 80px;
+    margin-left: 130px;
+}
+.carousel-name {
+    margin-top: 70px;
+    font-size: 20px;
+    color: #004a6f;
+    margin-left: 300px;
+}
+
+.carousel-sms {
+    color: black;
+    font-size: large;
+}
+
+.carousel-description {
+    color: black;
+    margin-left: 130px;
+    font-size: large;
+}
+
+.carousel-cost {
+    margin-top: 70px;
+    color: black;
+    float: left;
+    font-size: large;
+}
+
+.carousel-opt {
+    margin-top: 40px;
+    color: black;
+    font-size: large;
+}
