@@ -24,7 +24,7 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 #parque {
-    margin-top: 20px;
+    /*margin-top: 20px;*/
     margin-left: 100px;
     margin-right: 100px;
     min-height: 300px;
@@ -33,10 +33,11 @@
 }
 
 .new-rates {
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-left: 100px;
     box-sizing: border-box;
     display: block;
-    width: 100%;
+    width: 85.2%;
     height: 100%;
     text-align: center;
     position: relative;
@@ -102,7 +103,7 @@
     margin-top: 70px;
     font-size: 20px;
     color: #004a6f;
-    margin-left: 300px;
+    margin-left: 100px;
 }
 
 .carousel-sms {

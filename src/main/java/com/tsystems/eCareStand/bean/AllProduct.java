@@ -16,6 +16,7 @@ import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -58,6 +59,7 @@ public class AllProduct implements Serializable {
                 log.info(rate.getName());
             }
             topRates = allRates.stream().skip(allRates.size()-3).collect(Collectors.toList());
+            Collections.reverse(topRates);
         }
     }
 
