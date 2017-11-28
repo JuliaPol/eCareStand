@@ -30,7 +30,7 @@
                             <b:column span="2"><h:outputText styleClass="carousel-cost" value="#{product.topRateList.get(0).cost} $"/></b:column>
                         </b:row>
                         <b:row>
-                            <b:column span="4"><h:outputText styleClass="carousel-description" value="#{product.topRateList.get(0).description}"/></b:column>
+                            <b:column styleClass="carousel-description" span="4"><h:outputText value="#{product.topRateList.get(0).description}"/></b:column>
                             <b:column span="2"><h:outputText styleClass="carousel-sms" value="#{product.topRateList.get(0).sms} SMS"/></b:column>
                             <b:column span="2"><h:outputText styleClass="carousel-sms" value="#{product.topRateList.get(0).internet} Gb"/></b:column>
                             <b:column span="2"><h:outputText styleClass="carousel-sms" value="#{product.topRateList.get(0).calls} minutes"/></b:column>
@@ -53,7 +53,7 @@
                             <b:column span="2"><h:outputText styleClass="carousel-cost" value="#{rateElem.cost} $"/></b:column>
                         </b:row>
                         <b:row>
-                            <b:column span="4"><h:outputText styleClass="carousel-description" value="#{rateElem.description}"/></b:column>
+                            <b:column styleClass="carousel-description" span="4"><h:outputText value="#{rateElem.description}"/></b:column>
                             <b:column span="2"><h:outputText styleClass="carousel-sms" value="#{rateElem.sms} SMS"/></b:column>
                             <b:column span="2"><h:outputText styleClass="carousel-sms" value="#{rateElem.internet} Gb"/></b:column>
                             <b:column span="2"><h:outputText styleClass="carousel-sms" value="#{rateElem.calls} minutes"/></b:column>
